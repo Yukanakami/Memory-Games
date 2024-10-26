@@ -17,6 +17,7 @@ let lockBoard = false;
 let score = 0;
 let timeLeft = 60; 
 let countdownInterval = null; 
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -37,20 +38,16 @@ function createBoard() {
         gameBoard.appendChild(cardElement);
     });
 
-    
     score = 0;
     timeLeft = 60; 
     document.getElementById('score').textContent = score;
     document.getElementById('timer').textContent = timeLeft;
 
-    
     document.getElementById('timer').classList.remove('low-time');
 
-    
     clearInterval(countdownInterval); 
-    countdownInterval = setInterval(updateTimer, 1000);
+    countdownInterval = setInterval(updateTimer, 1500); // Timer berubah ke 1,5 detik
 }
-
 
 function flipCard() {
     if (lockBoard) return;
@@ -77,11 +74,9 @@ function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 
-   
     score++;
     document.getElementById('score').textContent = score;
 
-   
     if (score === cards.length / 2) {
         clearInterval(countdownInterval); 
         alert("Congratulations! You've matched all cards.");
@@ -108,7 +103,6 @@ function updateTimer() {
     const timerElement = document.getElementById('timer');
     timerElement.textContent = timeLeft; 
 
-    
     if (timeLeft <= 10) {
         timerElement.classList.add('low-time'); 
     } else {
@@ -122,8 +116,6 @@ function updateTimer() {
     }
 }
 
-
 document.getElementById('reset-button').addEventListener('click', createBoard);
-
 
 createBoard();
