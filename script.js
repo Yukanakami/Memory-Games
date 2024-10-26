@@ -15,7 +15,7 @@ let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 let score = 0;
-let timeLeft = 60; 
+let timeLeft = 90; 
 let countdownInterval = null; 
 
 function shuffle(array) {
@@ -39,7 +39,7 @@ function createBoard() {
     });
 
     score = 0;
-    timeLeft = 60; 
+    timeLeft = 90; 
     document.getElementById('score').textContent = score;
     document.getElementById('timer').textContent = timeLeft;
 
